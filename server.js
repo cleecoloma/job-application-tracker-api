@@ -54,3 +54,21 @@ app.put('/jobs/:jobId', async (request, response) => {
     response.status(400).send(`Please send correct job object`, error)
   }
 })
+
+// DELETE
+app.delete('/jobs/:job:Id', async (request, response) => {
+  try {
+    if (!request.params.jobId) {
+    request.status(404).send('Please provide valid job ID');
+    } else {
+      console.log('Deleting job at ID: ' + request.params.jobId);
+      let result = await JobModel.findByIdAndDelete(request.params.jobId);
+      console.log(result);
+      response.status(204).send('Success');
+    };
+  } catch (error) {
+    response.status(500).send('Internal Server Error')
+  }
+})
+
+app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
