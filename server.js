@@ -27,4 +27,18 @@ app.get('/jobs', async (request, response) => {
   }
 });
 
-//C
+// CREATE
+app.post('/jobs', async (request, response) => {
+  try {
+    let { company, location, title, postingLink, appliedStatus, appliedDate, notes } = request.body;
+    if (!company || !location || !title || !postingLink) {
+      response.status(400).send('Please send all required job object properties')
+    } else {
+      let newJob = new JobModel({ company, location, title, postingLink, appliedStatus, appliedDate, notes });
+      let job = await newJob.save();
+      response.json(job);
+    }
+  } catch (error) {
+    response.status(400).send('Please send correct job object', error)
+  }
+})
