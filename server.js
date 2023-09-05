@@ -42,3 +42,15 @@ app.post('/jobs', async (request, response) => {
     response.status(400).send('Please send correct job object', error)
   }
 })
+
+// UPDATE
+app.put('/jobs/:jobId', async (request, response) => {
+  let id = request.params.jobId;
+  try {
+    await JobModel.replaceOne({ _id: id }, request.body);
+    let newJob = await JobModel.findOne({ _id: id });
+    response.status(200).json(newJob);
+  } catch (error) {
+    response.status(400).send(`Please send correct job object`, error)
+  }
+})
