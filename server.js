@@ -3,8 +3,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const mongoose = required('mongoose'); 
-const JobModel = required('./models/JobModel.js');
+const mongoose = require('mongoose'); 
+const JobModel = require('./models/JobModel.js');
 const authorize = require('./auth/authorize.js')
 const PORT = process.env.PORT;
 const MONGODB_URL = process.env.MONGODB_URL;
