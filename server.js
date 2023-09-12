@@ -31,7 +31,7 @@ app.get('/jobs', async (request, response) => {
 app.post('/jobs', async (request, response) => {
   try {
     let { company, location, title, postingLink, appliedStatus, appliedDate, notes } = request.body;
-    if (!company || !location || !title || !postingLink) {
+    if (!company || !location || !title) {
       response.status(400).send('Please send all required job object properties')
     } else {
       let newJob = new JobModel({ company, location, title, postingLink, appliedStatus, appliedDate, notes });
