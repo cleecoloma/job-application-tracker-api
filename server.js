@@ -19,8 +19,8 @@ mongoose.connect(MONGODB_URL);
 // READ
 app.get('/jobs', async (request, response) => {
   try {
-    let AllJobResponse = await JobModel.find({});
-    response.json(AllJobResponse);
+    let allJobResponse = await JobModel.find({});
+    response.json(allJobResponse);
   } catch (error) {
     console.log('Something went wrong when finding jobs', error);
     response.status(500).send(error);
