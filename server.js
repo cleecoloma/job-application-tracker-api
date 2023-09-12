@@ -29,6 +29,7 @@ app.get('/jobs', async (request, response) => {
 
 // CREATE
 app.post('/jobs', async (request, response) => {
+  console.log(`Hello - Im at the server now`, request.body);
   try {
     let { company, location, title, postingLink, appliedStatus, appliedDate, notes } = request.body;
     if (!company || !location || !title) {
@@ -39,7 +40,7 @@ app.post('/jobs', async (request, response) => {
       response.json(job);
     }
   } catch (error) {
-    response.status(400).send('Please send correct job object', error)
+    response.status(500).send('Please send correct job object', error)
   }
 })
 
@@ -51,7 +52,7 @@ app.put('/jobs/:jobId', async (request, response) => {
     let newJob = await JobModel.findOne({ _id: id });
     response.status(200).json(newJob);
   } catch (error) {
-    response.status(400).send(`Please send correct job object`, error)
+    response.status(500).send(`Please send correct job object`, error)
   }
 })
 
