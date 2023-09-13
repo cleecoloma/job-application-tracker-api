@@ -19,13 +19,9 @@ const JobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  appliedStatus: {
-    type: Boolean,
-    required: false,
-  },
-  appliedDate: {
+  status: {
     type: String,
-    required: false,
+    required: true,
   },
   notes: {
     type: String,
