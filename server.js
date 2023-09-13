@@ -22,14 +22,12 @@ app.get('/jobs', async (request, response) => {
     let allJobResponse = await JobModel.find({});
     response.json(allJobResponse);
   } catch (error) {
-    console.log('Something went wrong when finding jobs', error);
-    response.status(500).send(error);
+    response.status(500).send('Something went wrong when finding jobs', error);
   }
 });
 
 // CREATE
 app.post('/jobs', async (request, response) => {
-  console.log(`Hello - Im at the server now`, request.body);
   try {
     let { company, location, title, link, status, notes } = request.body;
     if (!company || !location || !title) {
@@ -62,9 +60,7 @@ app.delete('/jobs/:jobId', async (request, response) => {
     if (!request.params.jobId) {
     request.status(404).send('Please provide valid job ID');
     } else {
-      console.log('Deleting job at ID: ' + request.params.jobId);
       let result = await JobModel.findByIdAndDelete(request.params.jobId);
-      console.log(result);
       response.status(204).send('Success');
     };
   } catch (error) {
