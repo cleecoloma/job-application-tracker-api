@@ -31,11 +31,11 @@ app.get('/jobs', async (request, response) => {
 app.post('/jobs', async (request, response) => {
   console.log(`Hello - Im at the server now`, request.body);
   try {
-    let { company, location, title, postingLink, appliedStatus, appliedDate, notes } = request.body;
+    let { company, location, title, link, status, notes } = request.body;
     if (!company || !location || !title) {
       response.status(400).send('Please send all required job object properties')
     } else {
-      let newJob = new JobModel({ company, location, title, postingLink, appliedStatus, appliedDate, notes });
+      let newJob = new JobModel({ company, location, title, link, status, notes });
       let job = await newJob.save();
       response.json(job);
     }
