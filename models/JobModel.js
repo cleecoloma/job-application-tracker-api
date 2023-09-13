@@ -15,7 +15,7 @@ const JobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  postingLink: {
+  link: {
     type: String,
     required: false,
   },
