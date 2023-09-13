@@ -57,7 +57,7 @@ app.put('/jobs/:jobId', async (request, response) => {
 })
 
 // DELETE
-app.delete('/jobs/:job:Id', async (request, response) => {
+app.delete('/jobs/:jobId', async (request, response) => {
   try {
     if (!request.params.jobId) {
     request.status(404).send('Please provide valid job ID');
