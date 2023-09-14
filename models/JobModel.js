@@ -15,6 +15,10 @@ const JobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  addedDate: {
+    type: String,
+    required: true,
+  },
   link: {
     type: String,
     required: false,

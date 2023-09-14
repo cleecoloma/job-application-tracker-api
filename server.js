@@ -33,7 +33,10 @@ app.post('/jobs', async (request, response) => {
     if (!company || !location || !title) {
       response.status(400).send('Please send all required job object properties')
     } else {
-      let newJob = new JobModel({ company, location, title, link, status, notes });
+      const currentDate = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const addedDate = currentDate.toLocaleDateString(undefined, options);
+      let newJob = new JobModel({ company, location, title, addedDate, link, status, notes });
       let job = await newJob.save();
       response.json(job);
     }
