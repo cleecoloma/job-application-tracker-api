@@ -19,8 +19,6 @@ mongoose.connect(MONGODB_URL);
 // READ
 app.get('/jobs', async (request, response) => {
   const email = request.query.user;
-  console.log(request.query);
-  console.log(email);
   try {
     let allJobResponse = await JobModel.find({ user: email});
     response.json(allJobResponse);
