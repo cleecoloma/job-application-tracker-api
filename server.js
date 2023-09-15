@@ -29,14 +29,14 @@ app.get('/jobs', async (request, response) => {
 // CREATE
 app.post('/jobs', async (request, response) => {
   try {
-    let { company, location, title, link, status, notes } = request.body;
-    if (!company || !location || !title) {
+    let { user, company, location, title, link, status, notes } = request.body;
+    if (!user || !company || !location || !title) {
       response.status(400).send('Please send all required job object properties')
     } else {
       const currentDate = new Date();
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       const addedDate = currentDate.toLocaleDateString(undefined, options);
-      let newJob = new JobModel({ company, location, title, addedDate, link, status, notes });
+      let newJob = new JobModel({ user, company, location, title, addedDate, link, status, notes });
       let job = await newJob.save();
       response.json(job);
     }
