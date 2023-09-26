@@ -42,7 +42,7 @@ app.post('/jobs', async (request, response) => {
       response.json(job);
     }
   } catch (error) {
-    response.status(500).send('Please send correct job object', error)
+    response.status(500).send('An error occurred: ' + error.message);
   }
 })
 
@@ -54,7 +54,7 @@ app.put('/jobs/:jobId', async (request, response) => {
     let newJob = await JobModel.findOne({ _id: id });
     response.status(200).json(newJob);
   } catch (error) {
-    response.status(500).send(`Please send correct job object`, error)
+    response.status(500).send('An error occurred: ' + error.message);
   }
 })
 
