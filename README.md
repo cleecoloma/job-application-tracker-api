@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/cleecoloma/job-application-tracker">
-    <img src="/public/images/cookbot-logo.png" alt="Logo" width="80" height="80">
+    <img src="/public/images/job-application-logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Job Application Tracker</h3>
